@@ -1,6 +1,9 @@
 local M = {
   "nvim-telescope/telescope.nvim",
-  dependencies = { { "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true } },
+  dependencies = {
+		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true },
+		{ "nvim-telescope/telescope-live-grep-args.nvim" },
+	},
 }
 
 function M.config()
@@ -19,7 +22,6 @@ function M.config()
 
   local icons = require "user.icons"
   local actions = require "telescope.actions"
-
 
   require("telescope").setup {
     defaults = {
@@ -124,6 +126,7 @@ function M.config()
       },
     },
   }
+	require("telescope").load_extension("live_grep_args")
 end
 
 return M

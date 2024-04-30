@@ -6,13 +6,16 @@ function M.config()
   local mappings = {
     q = { "<cmd>confirm q<CR>", "Quit" },
     h = { "<cmd>nohlsearch<CR>", "NOHL" },
-    [";"] = { "<cmd>tabnew | terminal<CR>", "Term" },
     v = { "<cmd>vsplit<CR>", "Split" },
     b = { name = "Buffers" },
     d = { name = "Debug" },
     f = { name = "Find" },
     g = { name = "Git" },
-    l = { name = "LSP" },
+    l = {
+			name = "LSP",
+			p = { ":lua vim.lsp.buf.hover()<cr>", "Peek type" },
+			x = { ":LspRestart<cr>", "LSP restart" },
+		},
     p = { name = "Plugins" },
     t = { name = "Test" },
     a = {
@@ -24,6 +27,12 @@ function M.config()
       l = { "<cmd>+tabmove<cr>", "Move Right" },
     },
     T = { name = "Treesitter" },
+		o = {
+			name = "Other",
+			w = { ":set listchars=tab:⇤–⇥,space:·,trail:·,precedes:⇠,extends:⇢,nbsp:×<cr>:set list<cr>", "Show whitespaces" },
+			h = { ":set nolist<cr>", "Hide whitespaces" },
+			l = { ":set wrap!<cr>", "Toggle linewrap" },
+		},
   }
 
   local which_key = require "which-key"
