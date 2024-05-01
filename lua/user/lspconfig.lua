@@ -129,6 +129,17 @@ function M.config()
 
     lspconfig[server].setup(opts)
   end
+
+	-- install volar v1.8.27 with the command MasonInstall vue-language-server@1.8.27
+	-- then this config will work
+	lspconfig.volar.setup {
+		-- filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
+		init_options = {
+			typescript = {
+				tsdk = vim.env.HOME .. "/.local/share/nvim/mason/packages/vue-language-server/node_modules/typescript/lib",
+			},
+		},
+	}
 end
 
 return M
