@@ -25,6 +25,7 @@ keymap("n", "<leader>7", ":BufferLineGoToBuffer 7<cr>", opts)
 keymap("n", "<leader>8", ":BufferLineGoToBuffer 8<cr>", opts)
 keymap("n", "<leader>9", ":BufferLineGoToBuffer 9<cr>", opts)
 keymap("n", "<leader>-1", ":BufferLineGoToBuffer -1<cr>", opts)
+keymap("n", "K", ":lua vim.lsp.buf.hover()<cr>", opts)
 keymap("v", "∆", ":m '>+1<CR>gv=gv", opts)
 keymap("v", "˚", ":m '<-2<CR>gv=gv", opts)
 
