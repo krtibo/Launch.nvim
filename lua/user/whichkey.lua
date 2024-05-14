@@ -22,6 +22,7 @@ function M.config()
 			x = { ":LspRestart<cr>", "LSP restart" },
 		},
     p = { name = "Plugins" },
+    r = { ":Telescope registers<CR>", "Registers" },
     t = { name = "Test" },
     a = {
       name = "Tab",
