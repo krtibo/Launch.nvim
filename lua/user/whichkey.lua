@@ -33,6 +33,11 @@ function M.config()
 			h = { ":set nolist<cr>", "Hide whitespaces" },
 			l = { ":set wrap!<cr>", "Toggle linewrap" },
 		},
+		n = {
+			name = "Wiki",
+			n = { ":lua require(\"kiwi\").open_wiki_index()<cr>", "Open Wiki index" },
+			t = { ":lua require(\"kiwi\").todo.toggle()<cr>", "Toggle task" },
+		},
   }
 
   local which_key = require "which-key"
