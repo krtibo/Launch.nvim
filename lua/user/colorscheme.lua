@@ -7,7 +7,7 @@ local M = {
 
 function M.config()
 	require("flannel").setup({})
-	vim.cmd.colorscheme "flannel-muted"
+	vim.cmd.colorscheme "flannel-vibrant"
 end
 
 return M

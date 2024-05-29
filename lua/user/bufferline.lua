@@ -11,12 +11,19 @@ function M.config()
 			end,
 			themable = true,
 			show_buffer_icons = false,
-			separator_style= "thin",
+			separator_style= {"│", "│"},
 			always_show_bufferline = false,
 			auto_toggle_bufferline = true,
 			indicator = {
-				icon = '█ ',
-				style = 'icon',
+				-- icon = '█ ',
+				style = 'none',
+			},
+			offsets = {
+				{
+					filetype = "NvimTree",
+					highlight = "Directory",
+					text_align = "left"
+				}
 			},
 		},
 		highlights = require("flannel.groups.integrations.bufferline").get()
