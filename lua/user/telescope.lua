@@ -18,6 +18,7 @@ function M.config()
     ["<leader>fh"] = { "<cmd>Telescope help_tags<cr>", "Help" },
     ["<leader>fl"] = { "<cmd>Telescope resume<cr>", "Last Search" },
     ["<leader>fr"] = { "<cmd>Telescope oldfiles<cr>", "Recent File" },
+    ["<leader>fg"] = { "<cmd>Telescope git_status<cr>", "Git status" },
   }
 
   local icons = require "user.icons"
