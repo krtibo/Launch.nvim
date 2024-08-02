@@ -4,46 +4,37 @@ local M = {
 
 function M.config()
   local mappings = {
-    q = { "<cmd>confirm q<CR>", "Quit" },
-    h = { "<cmd>nohlsearch<CR>", "NOHL" },
-    v = { "<cmd>vsplit<CR>", "Split" },
-    b = { name = "Buffers",
-			a = { ":BufDelAll<cr>", "Close all" },
-			o = { ":BufDelOthers<cr>", "Close others" },
-			l = { ":BufferLineCloseLeft<cr>", "Close all to left" },
-			r = { ":BufferLineCloseRight<cr>", "Close all to right" },
-		},
-    d = { name = "Debug" },
-    f = { name = "Find" },
-    g = { name = "Git" },
-    l = {
-			name = "LSP",
-			p = { ":lua vim.lsp.buf.hover()<cr>", "Peek type" },
-			x = { ":LspRestart<cr>", "LSP restart" },
-		},
-    p = { name = "Plugins" },
-    r = { ":Telescope registers<CR>", "Registers" },
-    t = { name = "Test" },
-    a = {
-      name = "Tab",
-      n = { "<cmd>$tabnew<cr>", "New Empty Tab" },
-      N = { "<cmd>tabnew %<cr>", "New Tab" },
-      o = { "<cmd>tabonly<cr>", "Only" },
-      h = { "<cmd>-tabmove<cr>", "Move Left" },
-      l = { "<cmd>+tabmove<cr>", "Move Right" },
-    },
-    T = { name = "Treesitter" },
-		o = {
-			name = "Other",
-			w = { ":set listchars=tab:⇤–⇥,space:·,trail:·,precedes:⇠,extends:⇢,nbsp:×<cr>:set list<cr>", "Show whitespaces" },
-			h = { ":set nolist<cr>", "Hide whitespaces" },
-			l = { ":set wrap!<cr>", "Toggle linewrap" },
-		},
-		n = {
-			name = "Wiki",
-			n = { ":lua require(\"kiwi\").open_wiki_index()<cr>", "Open Wiki index" },
-			t = { ":lua require(\"kiwi\").todo.toggle()<cr>", "Toggle task" },
-		},
+		{ "<leader>g", group = "Git" },
+		{ "<leader>f", group = "Find" },
+		{ "<leader>d", group = "Debug" },
+		{ "<leader>q", "<cmd>confirm q<CR>", desc = "Quit" },
+		{ "<leader>h", "<cmd>nohlsearch<CR>", desc = "NOHL" },
+		{ "<leader>v", "<cmd>vsplit<CR>", desc = "Split" },
+		{ "<leader>T", group = "Treesitter" },
+		{ "<leader>t", group = "Test" },
+		{ "<leader>p", group = "Plugins" },
+		{ "<leader>o", group = "Other" },
+		{ "<leader>r", ":Telescope registers<CR>", desc = "Registers" },
+		{ "<leader>ow", ":set listchars=tab:⇤–⇥,space:·,trail:·,precedes:⇠,extends:⇢,nbsp:×<cr>:set list<cr>", desc = "Show whitespaces" },
+		{ "<leader>oh", ":set nolist<cr>", desc = "Hide whitespaces" },
+		{ "<leader>ol", ":set nolist<cr>", desc = "Toggle linewrap" },
+		{ "<leader>n", group = "Wiki" },
+		{ "<leader>nn", ":lua require(\"kiwi\").open_wiki_index()<cr>", desc = "Open Wiki index" },
+		{ "<leader>nt", ":lua require(\"kiwi\").todo.toggle()<cr>", desc = "Toggle task" },
+		{ "<leader>a", group = "Tab" },
+		{ "<leader>an", "<cmd>$tabnew<cr>", desc = "New empty tab" },
+		{ "<leader>aN", "<cmd>tabnew %<cr>", desc = "New tab" },
+		{ "<leader>ao", "<cmd>tabonly<cr>", desc = "Only" },
+		{ "<leader>ah", "<cmd>-tabmove<cr>", desc = "Move left" },
+		{ "<leader>al", "<cmd>+tabmove<cr>", desc = "Move right" },
+		{ "<leader>l", group = "LSP" },
+		{ "<leader>lp", ":lua vim.lsp.buf.hover()<cr>", desc = "Peek type" },
+		{ "<leader>lx", ":LspRestart<cr>", desc = "LSP restart" },
+		{ "<leader>b", group = "Buffers" },
+		{ "<leader>ba", ":BufDelAll<cr>", desc = "Close all" },
+		{ "<leader>bo", ":BufDelOthers<cr>", desc = "Close others" },
+		{ "<leader>bl", ":BufferLineCloseLeft<cr>", desc = "Close all to left" },
+		{ "<leader>br", ":BufferLineCloseRight<cr>", desc = "Close all to right" },
   }
 
   local which_key = require "which-key"
@@ -65,12 +56,12 @@ function M.config()
         g = false,
       },
     },
-    window = {
+    win = {
       border = "rounded",
-      position = "bottom",
+      -- position = "bottom",
       padding = { 2, 2, 2, 2 },
     },
-    ignore_missing = true,
+    -- ignore_missing = true,
     show_help = false,
     show_keys = false,
     disable = {
@@ -84,7 +75,7 @@ function M.config()
     prefix = "<leader>",
   }
 
-  which_key.register(mappings, opts)
+  which_key.add(mappings, opts)
 end
 
 return M

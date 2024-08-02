@@ -51,3 +51,4 @@ vim.g.netrw_banner = 0
 vim.g.netrw_mouse = 2
 vim.g.smoothie_update_interval = 20
 vim.o.pumblend = 0
+vim.o.guifont = "JetBrainsMono NF:h11"

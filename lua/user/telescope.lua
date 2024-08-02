@@ -8,20 +8,20 @@ local M = {
 
 function M.config()
   local wk = require "which-key"
-  wk.register {
-    ["<leader>bf"] = { "<cmd>Telescope buffers previewer=false<cr>", "Find" },
-    ["<leader>fb"] = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-    ["<leader>fc"] = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
-    ["<leader>ff"] = { "<cmd>Telescope find_files<cr>", "Find files" },
-    ["<leader>fp"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
-    ["<leader>ft"] = { "<cmd>Telescope live_grep<cr>", "Find Text" },
-    ["<leader>fh"] = { "<cmd>Telescope help_tags<cr>", "Help" },
-    ["<leader>fl"] = { "<cmd>Telescope resume<cr>", "Last Search" },
-    ["<leader>fo"] = { "<cmd>Telescope oldfiles<cr>", "Recent File" },
-    ["<leader>fg"] = { "<cmd>Telescope git_status<cr>", "Git status" },
-    ["<leader>fs"] = { "<cmd>Telescope treesitter<cr>", "Symbols" },
-    ["<leader>fr"] = { "<cmd>Telescope lsp_references<cr>", "References" },
-    ["<leader>fd"] = { "<cmd>Telescope lsp_definitions<cr>", "Definitions" },
+  wk.add {
+    { "<leader>bf", "<cmd>Telescope buffers previewer=false<cr>", desc = "Find" },
+    { "<leader>fb", "<cmd>Telescope git_branches<cr>", desc = "Checkout branch" },
+    { "<leader>fc", "<cmd>Telescope colorscheme<cr>", desc = "Colorscheme" },
+    { "<leader>fd", "<cmd>Telescope lsp_definitions<cr>", desc = "Definitions" },
+    { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find files" },
+    { "<leader>fg", "<cmd>Telescope git_status<cr>", desc = "Git status" },
+    { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help" },
+    { "<leader>fl", "<cmd>Telescope resume<cr>", desc = "Last Search" },
+    { "<leader>fo", "<cmd>Telescope oldfiles<cr>", desc = "Recent File" },
+    { "<leader>fp", "<cmd>lua require('telescope').extensions.projects.projects()<cr>", desc = "Projects" },
+    { "<leader>fr", "<cmd>Telescope lsp_references<cr>", desc = "References" },
+    { "<leader>fs", "<cmd>Telescope treesitter<cr>", desc = "Symbols" },
+    { "<leader>ft", "<cmd>Telescope live_grep<cr>", desc = "Find Text" },
   }
 
   local icons = require "user.icons"
