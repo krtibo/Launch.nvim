@@ -35,6 +35,16 @@ function M.config()
 		{ "<leader>bo", ":BufDelOthers<cr>", desc = "Close others" },
 		{ "<leader>bl", ":BufferLineCloseLeft<cr>", desc = "Close all to left" },
 		{ "<leader>br", ":BufferLineCloseRight<cr>", desc = "Close all to right" },
+		{ "<leader>1", ":BufferLineGoToBuffer 1<cr>", hidden = true },
+		{ "<leader>2", ":BufferLineGoToBuffer 2<cr>", hidden = true },
+		{ "<leader>3", ":BufferLineGoToBuffer 3<cr>", hidden = true },
+		{ "<leader>4", ":BufferLineGoToBuffer 4<cr>", hidden = true },
+		{ "<leader>5", ":BufferLineGoToBuffer 5<cr>", hidden = true },
+		{ "<leader>6", ":BufferLineGoToBuffer 6<cr>", hidden = true },
+		{ "<leader>7", ":BufferLineGoToBuffer 7<cr>", hidden = true },
+		{ "<leader>8", ":BufferLineGoToBuffer 8<cr>", hidden = true },
+		{ "<leader>9", ":BufferLineGoToBuffer 9<cr>", hidden = true },
+		{ "<leader>c", ":BufDel<cr>", hidden = true },
   }
 
   local which_key = require "which-key"
@@ -58,10 +68,9 @@ function M.config()
     },
     win = {
       border = "rounded",
-      -- position = "bottom",
       padding = { 2, 2, 2, 2 },
+			title = false,
     },
-    -- ignore_missing = true,
     show_help = false,
     show_keys = false,
     disable = {
