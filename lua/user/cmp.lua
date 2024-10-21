@@ -130,14 +130,14 @@ function M.config()
       end,
     },
     sources = {
+			{ name = "luasnip", priority = 4 },
       { name = "nvim_lsp", priority = 3 },
-      { name = "luasnip", priority = 2 },
       { name = "cmp_tabnine", priority = 3 },
       { name = "nvim_lua", priority = 3 },
       { name = "buffer", priority = 1 },
       { name = "path", priority = 1 },
       { name = "calc", priority = 1 },
-      { name = "emoji", priority = 1 },
+      -- { name = "emoji", priority = 1 },
     },
     confirm_opts = {
       behavior = cmp.ConfirmBehavior.Replace,
