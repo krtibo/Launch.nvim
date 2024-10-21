@@ -26,6 +26,7 @@ function M.config()
 
   local icons = require "user.icons"
   local actions = require "telescope.actions"
+	local action_state = require "telescope.actions.state"
 
   require("telescope").setup {
     defaults = {
@@ -120,7 +121,21 @@ function M.config()
         theme = "dropdown",
         initial_mode = "normal",
       },
-    },
+
+			git_commits = {
+				mappings = {
+					i = {
+						["<CR>"] = function() -- show diffview for the selected commit
+							-- Open in diffview
+							local entry = action_state.get_selected_entry()
+							-- close Telescope window properly prior to switching windows
+							actions.close(vim.api.nvim_get_current_buf())
+							vim.cmd(("DiffviewOpen %s^!"):format(entry.value))
+						end,
+					},
+				},
+			},
+			},
     extensions = {
       fzf = {
         fuzzy = true, -- false will only do exact matching

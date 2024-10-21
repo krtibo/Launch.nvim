@@ -120,6 +120,18 @@ function M.config()
     lspconfig[server].setup(opts)
   end
 
+	lspconfig.emmet_ls.setup({
+		capabilities = M.common_capabilities(),
+    filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue" },
+    init_options = {
+      html = {
+        options = {
+          ["bem.enabled"] = true,
+        },
+      },
+    }
+})
+
 	-- install volar v1.8.27 with the command MasonInstall vue-language-server@1.8.27
 	-- then this config will work
 	lspconfig.volar.setup {
