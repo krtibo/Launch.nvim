@@ -143,9 +143,18 @@ function M.config()
         override_file_sorter = true, -- override the file sorter
         case_mode = "smart_case", -- or "ignore_case" or "respect_case"
       },
+			["ui-select"] = {
+				require("telescope.themes").get_dropdown {
+					-- even more opts
+				},
+				specific_opts = {
+				  codeactions = false,
+				},
+			},
     },
   }
 	require("telescope").load_extension("live_grep_args")
+	require("telescope").load_extension("ui-select")
 end
 
 return M
