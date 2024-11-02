@@ -2,6 +2,17 @@ local M = {
   "nvim-lualine/lualine.nvim",
 }
 
+local theme_colors = require("flannel.palettes").get_palette()
+
+local function minimap()
+		local sbar = { '█', '▇', '▆', '▅', '▄', '▃', '▂', '▁' }
+		-- local sbar = { '🭶', '🭷', '🭸', '🭹', '🭺', '🭻' }
+		local curr_line = vim.api.nvim_win_get_cursor(0)[1]
+		local lines = vim.api.nvim_buf_line_count(0)
+		local i = math.floor((curr_line - 1) / lines * #sbar) + 1
+		return string.rep(sbar[i], 2)
+end
+
 function M.config()
   local icons = require "user.icons"
   require("lualine").setup {
@@ -25,10 +36,21 @@ function M.config()
 				},
 			},
       lualine_x = { "diagnostics", "filetype" },
-      lualine_y = { "location", "progress" },
+      lualine_y = {
+				{
+					"location",
+					padding = 2,
+					color = { fg = theme_colors.blue, bg = theme_colors.base, gui='italic,bold' },
+				},
+				{
+					minimap,
+					padding = 0,
+					color = { fg = theme_colors.surface0, bg = theme_colors.red, gui='italic,bold' },
+				}
+			},
       lualine_z = {},
     },
-    extensions = { "quickfix", "man", "fugitive" },
+    extensions = { "quickfix", "man" },
   }
 end
 
