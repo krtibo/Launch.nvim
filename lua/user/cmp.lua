@@ -121,20 +121,14 @@ function M.config()
           vim_item.kind_hl_group = "CmpItemKindEmoji"
         end
 
-        if entry.source.name == "cmp_tabnine" then
-          vim_item.kind = icons.misc.Robot
-          vim_item.kind_hl_group = "CmpItemKindTabnine"
-        end
-
         return vim_item
       end,
     },
     sources = {
 			{ name = "luasnip", priority = 4 },
       { name = "nvim_lsp", priority = 3 },
-      { name = "cmp_tabnine", priority = 3 },
-      { name = "nvim_lua", priority = 3 },
-      { name = "buffer", priority = 1 },
+      { name = "buffer", priority = 2 },
+			{ name = "nvim_lua", priority = 1 },
       { name = "path", priority = 1 },
       { name = "calc", priority = 1 },
       -- { name = "emoji", priority = 1 },
