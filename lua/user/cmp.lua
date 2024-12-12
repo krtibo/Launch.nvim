@@ -139,10 +139,10 @@ function M.config()
       { name = "calc", priority = 1 },
       -- { name = "emoji", priority = 1 },
     },
-    confirm_opts = {
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = false,
-    },
+		confirm_opts = {
+			behavior = cmp.ConfirmBehavior.Replace,
+			select = false,
+		},
     window = {
       completion = {
         border = "rounded",

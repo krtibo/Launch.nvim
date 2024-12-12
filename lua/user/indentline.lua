@@ -20,7 +20,7 @@ function M.config()
       "text",
     },
     -- char = icons.ui.LineLeft,
-    char = icons.ui.LineMiddle,
+    char = "",
     -- context_char = icons.ui.LineLeft,
     context_char = icons.ui.LineMiddle,
     show_trailing_blankline_indent = false,

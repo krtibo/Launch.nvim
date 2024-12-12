@@ -3,11 +3,11 @@ return {
   priority = 1000,
   lazy = false,
   opts = {
-		bigfile = { enabled = true },
-		notifier = { enabled = true },
-		quickfile = { enabled = true },
-		statuscolumn = { enabled = true },
-		words = { enabled = true },
+		bigfile = { enabled = false },
+		notifier = { enabled = false },
+		quickfile = { enabled = false },
+		statuscolumn = { enabled = false },
+		words = { enabled = false },
 		lazygit = {
 			theme = {
 				[241]                      = { fg = "Special" },
