@@ -51,6 +51,8 @@ function M.config()
     { "<leader>ll", "<cmd>lua vim.lsp.codelens.run()<cr>", desc = "CodeLens Action" },
     { "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<cr>", desc = "Quickfix" },
     { "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename" },
+    { "<leader>ld", "<cmd>lua vim.diagnostic.disable()<cr>", desc = "Diagnostic disable" },
+    { "<leader>le", "<cmd>lua vim.diagnostic.enable()<cr>", desc = "Diagnostic disable" },
   }
 
   local lspconfig = require "lspconfig"
@@ -58,6 +60,7 @@ function M.config()
 
   local servers = {
     "lua_ls",
+    "pico8_ls",
     "cssls",
     "html",
     "tsserver",
@@ -66,6 +69,7 @@ function M.config()
     "bashls",
     "jsonls",
     "yamlls",
+		"gopls",
   }
 
   local default_diagnostic_config = {
@@ -161,6 +165,7 @@ function M.config()
 			},
 		},
 	}
+	lspconfig.gopls.setup({})
 end
 
 return M
