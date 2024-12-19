@@ -6,7 +6,13 @@ local M = {
 }
 
 function M.config()
-	require("flannel").setup({})
+	require("flannel").setup({
+		custom_highlights = function(colors)
+			return {
+				LspSignatureActiveParameter = { bg = colors.lavender, fg = colors.crust, style = { "bold" } },
+			}
+		end
+	})
 	vim.cmd.colorscheme "flannel-vibrant"
 end
 

@@ -4,6 +4,7 @@ local M = {
   dependencies = {
     {
       "folke/neodev.nvim",
+			'saghen/blink.cmp',
     },
   },
 }
@@ -28,8 +29,9 @@ M.on_attach = function(client, bufnr)
 end
 
 function M.common_capabilities()
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  capabilities.textDocument.completion.completionItem.snippetSupport = true
+  -- local capabilities = vim.lsp.protocol.make_client_capabilities()
+  local capabilities = require('blink.cmp').get_lsp_capabilities()
+  -- capabilities.textDocument.completion.completionItem.snippetSupport = true
   return capabilities
 end
 

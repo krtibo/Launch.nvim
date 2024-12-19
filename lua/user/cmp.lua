@@ -131,7 +131,6 @@ function M.config()
 			{ name = "nvim_lua", priority = 1 },
       { name = "path", priority = 1 },
       { name = "calc", priority = 1 },
-      -- { name = "emoji", priority = 1 },
     },
 		confirm_opts = {
 			behavior = cmp.ConfirmBehavior.Replace,
