@@ -24,7 +24,7 @@ function M.config()
 		{ "<leader>ol", ":set nolist<cr>", desc = "Toggle linewrap" },
 		{ "<leader>n", group = "Wiki" },
 		{ "<leader>nn", ":lua require(\"kiwi\").open_wiki_index()<cr>", desc = "Open Wiki index" },
-		{ "<leader>nt", ":lua require(\"kiwi\").todo.toggle()<cr>", desc = "Toggle task" },
+		{ "<leader>nn", ":enew | e /home/tibork/Documents/wiki/index.md<cr>", desc = "Open Wiki index" },
 		{ "<leader>l", group = "LSP" },
 		{ "<leader>lp", ":lua vim.lsp.buf.hover()<cr>", desc = "Peek type" },
 		{ "<leader>lx", ":LspRestart<cr>", desc = "LSP restart" },
