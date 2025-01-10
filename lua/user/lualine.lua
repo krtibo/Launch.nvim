@@ -5,8 +5,7 @@ local M = {
 local theme_colors = require("flannel.palettes").get_palette()
 
 local function minimap()
-		local sbar = { '█', '▇', '▆', '▅', '▄', '▃', '▂', '▁' }
-		-- local sbar = { '🭶', '🭷', '🭸', '🭹', '🭺', '🭻' }
+		local sbar = { '🭶', '🭷', '🭸', '🭹', '🭺', '🭻' }
 		local curr_line = vim.api.nvim_win_get_cursor(0)[1]
 		local lines = vim.api.nvim_buf_line_count(0)
 		local i = math.floor((curr_line - 1) / lines * #sbar) + 1
@@ -45,7 +44,7 @@ function M.config()
 				{
 					minimap,
 					padding = 0,
-					color = { fg = theme_colors.surface0, bg = theme_colors.red, gui='italic,bold' },
+					color = { fg = theme_colors.red, bg = theme_colors.surface0, gui='italic,bold' },
 				}
 			},
       lualine_z = {},
