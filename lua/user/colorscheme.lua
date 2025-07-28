@@ -7,6 +7,7 @@ local M = {
 
 function M.config()
 	require("flannel").setup({
+		flavour = "vibrant",
 		custom_highlights = function(colors)
 			return {
 				LspSignatureActiveParameter = { bg = colors.lavender, fg = colors.crust, style = { "bold" } },

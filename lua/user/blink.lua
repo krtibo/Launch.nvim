@@ -18,7 +18,7 @@ return {
 
 		completion = {
 			list = {
-				selection = 'manual',
+				selection = { preselect = false, auto_insert = false },
 			},
 			menu = {
 				border = 'rounded'
@@ -43,7 +43,12 @@ return {
 		},
 
     sources = {
-      default = { 'snippets', 'lsp', 'path', 'buffer' },
+      default = {
+				'lsp',
+				'snippets',
+				'buffer',
+				'path',
+			},
     },
   },
   opts_extend = { "sources.default" }

@@ -15,3 +15,7 @@ vim.diagnostic.config {
 	severity_sort = true,
 	update_in_insert = false,
 }
+
+local colors = require("flannel.palettes").get_palette()
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { undercurl = true, sp = colors.red })
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { undercurl = true, sp = colors.yellow })

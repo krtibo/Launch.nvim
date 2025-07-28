@@ -6,6 +6,7 @@ return {
     "antoinemadec/FixCursorHold.nvim",
     "nvim-treesitter/nvim-treesitter",
 		"nvim-neotest/neotest-jest",
+		"marilari88/neotest-vitest",
   },
 	config = function()
     require('neotest').setup({
@@ -18,6 +19,11 @@ return {
             return vim.fn.getcwd()
           end,
         }),
+				require("neotest-vitest") {
+					-- is_test_file = function(file_path)
+					-- 	return string.match(file_path, ".spec.ts")
+					-- end
+				},
       }
     })
   end

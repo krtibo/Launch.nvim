@@ -20,19 +20,21 @@ local function lsp_keymaps(bufnr)
   keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 end
 
-M.on_attach = function(client, bufnr)
+M.on_attach = function(bufnr)
   lsp_keymaps(bufnr)
-
-  -- if client.supports_method "textDocument/inlayHint" then
-  --   vim.lsp.inlay_hint.enable(bufnr, true)
-  -- end
 end
 
+-- function M.common_capabilities()
+--   local capabilities = require('blink.cmp').get_lsp_capabilities()
+--   return capabilities
+-- end
+
 function M.common_capabilities()
-  -- local capabilities = vim.lsp.protocol.make_client_capabilities()
-  local capabilities = require('blink.cmp').get_lsp_capabilities()
-  -- capabilities.textDocument.completion.completionItem.snippetSupport = true
-  return capabilities
+  local ok, caps = pcall(require, 'blink.cmp')
+  if ok and caps and caps.get_lsp_capabilities then
+    return caps.get_lsp_capabilities()
+  end
+  return vim.lsp.protocol.make_client_capabilities()
 end
 
 M.toggle_inlay_hints = function()
@@ -55,6 +57,7 @@ function M.config()
     { "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename" },
   }
 
+  local mason_lspconfig = require("mason-lspconfig")
   local lspconfig = require "lspconfig"
   local icons = require "user.icons"
 
@@ -62,8 +65,8 @@ function M.config()
     "lua_ls",
     "cssls",
     "html",
-    "tsserver",
-    "tsserver",
+		"vtsls",
+		"vue_ls",
     "pyright",
     "bashls",
     "jsonls",
@@ -125,44 +128,36 @@ function M.config()
 	lspconfig.emmet_ls.setup({
 		capabilities = M.common_capabilities(),
     filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue" },
-    init_options = {
-      html = {
-        options = {
-          ["bem.enabled"] = true,
-        },
-      },
-    }
-})
+	})
 
-	-- install volar v1.8.27 with the command MasonInstall vue-language-server@1.8.27
-	-- then this config will work
-	lspconfig.volar.setup {
-		-- filetypes = { "vue" },
-		init_options = {
-			vue = {
-				hybridMode = true,
-			},
-			-- typescript = {
-			-- 	tsdk = vim.env.HOME .. "/.local/share/nvim/mason/packages/vue-language-server/node_modules/typescript/lib",
-			-- },
-		},
+	local vue_language_server_path = '/home/tibork/.nvm/versions/node/v22.17.0/lib/node_modules/@vue/language-server'
+	local vue_plugin = {
+		name = '@vue/typescript-plugin',
+		location = vue_language_server_path,
+		languages = { 'vue' },
+		configNamespace = 'typescript',
 	}
 
-	local mason_packages = vim.env.HOME .. "/.local/share/nvim/mason/packages"
-	local volar_path = mason_packages .. "/vue-language-server/node_modules/@vue/language-server"
-
-	lspconfig.tsserver.setup {
-		filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
-		init_options = {
-			plugins = {
-				{
-					name = "@vue/typescript-plugin",
-					location = volar_path,
-					languages = { "vue" },
+	local vtsls_plugin = {
+		settings = {
+			vtsls = {
+				tsserver = {
+					globalPlugins = {
+							vue_plugin,
+					},
 				},
 			},
 		},
+		filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+		single_file_support = true,
 	}
+
+	local vue_ls_config = {
+		single_file_support = true,
+	}
+	vim.lsp.config('vue_ls', vue_ls_config)
+	vim.lsp.config('vtsls', vtsls_plugin)
+	vim.lsp.enable({ "vtsls", "vue_ls" })
 end
 
 return M

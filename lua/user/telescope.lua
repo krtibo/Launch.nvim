@@ -3,6 +3,13 @@ local M = {
   dependencies = {
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true },
 		{ "nvim-telescope/telescope-live-grep-args.nvim" },
+		{
+			"isak102/telescope-git-file-history.nvim",
+			dependencies = {
+					"nvim-lua/plenary.nvim",
+					"tpope/vim-fugitive"
+			}
+		}
 	},
 }
 
@@ -10,18 +17,19 @@ function M.config()
   local wk = require "which-key"
   wk.add {
     { "<leader>bf", "<cmd>Telescope buffers previewer=false<cr>", desc = "Find" },
-    { "<leader>fb", "<cmd>Telescope git_branches<cr>", desc = "Checkout branch" },
-    { "<leader>fc", "<cmd>Telescope colorscheme<cr>", desc = "Colorscheme" },
-    { "<leader>fd", "<cmd>Telescope lsp_definitions<cr>", desc = "Definitions" },
-    { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find files" },
-    { "<leader>fg", "<cmd>Telescope git_status<cr>", desc = "Git status" },
-    { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help" },
-    { "<leader>fl", "<cmd>Telescope resume<cr>", desc = "Last Search" },
-    { "<leader>fo", "<cmd>Telescope oldfiles<cr>", desc = "Recent File" },
-    { "<leader>fp", "<cmd>lua require('telescope').extensions.projects.projects()<cr>", desc = "Projects" },
-    { "<leader>fr", "<cmd>Telescope lsp_references<cr>", desc = "References" },
-    { "<leader>fs", "<cmd>Telescope treesitter<cr>", desc = "Symbols" },
-    { "<leader>ft", "<cmd>lua require(\"telescope\").extensions.live_grep_args.live_grep_args()<cr>", desc = "Find Text" },
+    -- { "<leader>fb", "<cmd>Telescope git_bcommits<cr>", desc = "Checkout branch" },
+    -- { "<leader>fc", "<cmd>Telescope colorscheme<cr>", desc = "Colorscheme" },
+    -- { "<leader>fd", "<cmd>Telescope lsp_definitions<cr>", desc = "Definitions" },
+    -- { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find files" },
+    -- { "<leader>fg", "<cmd>Telescope git_status<cr>", desc = "Git status" },
+    -- { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help" },
+    -- { "<leader>fl", "<cmd>Telescope resume<cr>", desc = "Last Search" },
+    -- { "<leader>fo", "<cmd>Telescope oldfiles<cr>", desc = "Recent File" },
+    -- { "<leader>fp", "<cmd>lua require('telescope').extensions.projects.projects()<cr>", desc = "Projects" },
+    -- { "<leader>fr", "<cmd>Telescope lsp_references<cr>", desc = "References" },
+    -- { "<leader>fs", "<cmd>Telescope treesitter<cr>", desc = "Symbols" },
+    -- { "<leader>ft", "<cmd>lua require(\"telescope\").extensions.live_grep_args.live_grep_args()<cr>", desc = "Find Text" },
+    -- { "<leader>fb", "<cmd>lua require(\"telescope\").extensions.git_file_history.git_file_history()<cr>", desc = "Open buffer at commit" },
   }
 
   local icons = require "user.icons"
@@ -48,6 +56,8 @@ function M.config()
         "--hidden",
         "--glob=!.git/",
       },
+			layout_strategy = 'horizontal',
+			layout_config = { height = 0.9 },
 
       mappings = {
         i = {
@@ -155,6 +165,7 @@ function M.config()
   }
 	require("telescope").load_extension("live_grep_args")
 	require("telescope").load_extension("ui-select")
+	require("telescope").load_extension("git_file_history")
 end
 
 return M

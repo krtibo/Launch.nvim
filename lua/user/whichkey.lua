@@ -5,9 +5,14 @@ local M = {
 function M.config()
   local mappings = {
 		{ "<leader>g", group = "Git" },
-		{ "<leader>gc", ":Telescope git_commits<CR>", desc = "Commits" },
+		-- { "<leader>gc", ":Telescope git_commits<CR>", desc = "Commits" },
 		{ "<leader>f", group = "Find" },
 		{ "<leader>d", group = "Debug" },
+		{ "<leader>dt", ":DapViewToggle!<cr>", desc = "Toggle DAP View" },
+		{ "<leader>db", ":DapToggleBreakpoint<cr>", desc = "Toggle breakpoint" },
+		{ "<leader>dc", ":DapContinue<cr>", desc = "Continue" },
+		{ "<leader>dx", ":DapDisconnect<cr>", desc = "Disconnect" },
+		{ "<leader>dr", "<cmd>lua require(\"neotest\").run.run({strategy = \"dap\"})<cr>", desc = "Run test in debug mode" },
 		{ "<leader>q", "<cmd>qall<CR>", desc = "Quit" },
 		{ "<leader>h", "<cmd>nohlsearch<CR>", desc = "NOHL" },
 		{ "<leader>v", "<cmd>vsplit<CR>", desc = "Split" },
@@ -18,7 +23,6 @@ function M.config()
 		{ "<leader>tn", "<cmd>lua require(\"neotest\").run.run()<cr>", desc = "Run nearest" },
 		{ "<leader>p", group = "Plugins" },
 		{ "<leader>o", group = "Other" },
-		{ "<leader>r", ":Telescope registers<CR>", desc = "Registers" },
 		{ "<leader>ow", ":set listchars=tab:⇤–⇥,space:·,trail:·,precedes:⇠,extends:⇢,nbsp:×<cr>:set list<cr>", desc = "Show whitespaces" },
 		{ "<leader>oh", ":set nolist<cr>", desc = "Hide whitespaces" },
 		{ "<leader>ol", ":set nolist<cr>", desc = "Toggle linewrap" },
@@ -29,8 +33,6 @@ function M.config()
 		{ "<leader>lp", ":lua vim.lsp.buf.hover()<cr>", desc = "Peek type" },
 		{ "<leader>lx", ":LspRestart<cr>", desc = "LSP restart" },
 		{ "<leader>b", group = "Buffers" },
-		{ "<leader>ba", ":BufDelAll<cr>", desc = "Close all" },
-		{ "<leader>bo", ":BufDelOthers<cr>", desc = "Close others" },
 		{ "<leader>1", ":BufferLineGoToBuffer 1<cr>", hidden = true },
 		{ "<leader>2", ":BufferLineGoToBuffer 2<cr>", hidden = true },
 		{ "<leader>3", ":BufferLineGoToBuffer 3<cr>", hidden = true },
@@ -40,7 +42,6 @@ function M.config()
 		{ "<leader>7", ":BufferLineGoToBuffer 7<cr>", hidden = true },
 		{ "<leader>8", ":BufferLineGoToBuffer 8<cr>", hidden = true },
 		{ "<leader>9", ":BufferLineGoToBuffer 9<cr>", hidden = true },
-		{ "<leader>c", ":BufDel<cr>", hidden = true },
   }
 
   local which_key = require "which-key"
